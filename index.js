@@ -53,7 +53,13 @@ async function run() {
             // res.send('post hitted');
         });
 
-
+        // DELETE API
+        app.delete('/services/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await servicesCollection.deleteOne(query);
+            res.json(result);
+        })
 
     }
     finally {
